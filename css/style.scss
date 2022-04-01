@@ -1,0 +1,160 @@
+// common
+*{
+  margin: 0;
+  padding: 0;
+}
+//variable
+$width100: 100vw;
+$height100: 100vh;
+$color-c4: #c4c4c4;
+$color-fff: #fff;
+$color-bk: #000;
+$border-bk: 1px solid black;
+$border-red: 1px solid red;
+//class
+@mixin flex {
+  display: flex;
+}
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+@mixin flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+@mixin flex-center-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// !숫자가 먼저 써지면 안됨
+$per100: 100%;
+//style
+.root{
+  width: $width100;
+  height: $height100;
+  .container{
+    width: inherit;
+    height: inherit;
+    >div:nth-child(1){
+      width: inherit;
+      height: 10vh;
+    }
+    >div:nth-child(2){
+      width: inherit;
+      height: 90%;
+      @include flex;
+      flex-wrap: wrap;
+      >header{
+        width: 90%;
+        height: 40vh;
+        border-radius: 0px 50px 50px 0px;
+        @include flex-center-center;
+        position: relative;
+        top: 5vh;
+        background-color: $color-fff;
+        // 
+        box-shadow: 1px 1px 10px 2px rgba($color: #000000, $alpha: 0.2);
+        >div:nth-child(1){
+          width: 60%;
+          height: 30%;
+          flex-direction: column;
+          @include flex-justify-center;
+          >div:nth-child(1){
+            width: $per100;
+            height: 20%;
+            ul{
+              width: $per100;
+              height: 20%;
+              display: flex;
+              justify-content: flex-end;
+              list-style-type: none;
+              column-gap: 1vw;
+              li{
+                color: $color-c4;
+                &:nth-child(1){
+                  color: $color-bk;
+                }
+              }
+            }
+          }
+          >div:nth-child(4){
+            @include flex;
+            align-items: flex-end;
+            img{
+              width: 30px;
+              height: 30px;
+              // !다른 방법으로 해결하기
+              position: relative;
+              left: 50vw;
+            }
+          }
+        }
+      }
+      // scroll
+      >div:nth-child(2){
+        width: 10%;
+        height: 90vh;
+        order: 3;
+        position: absolute;
+        right: 0;
+        // !box-shadow를 주기 위해서 스크롤 부분의 z-index 값을 음수 -1로 줬음
+        z-index: -1;
+        @include flex;
+        align-items: flex-end;
+        >div{
+          width: $per100;
+          height: 80%;
+          background-color: $color-c4;
+          border-radius: 100px 0px 0px 0px;
+          @include flex-center-center;
+          >div{
+            width: 30%;
+            height: 80%;
+            background-color: $color-fff;
+            border-radius: 100px;
+            @include flex-justify-center;
+            align-items: flex-start;
+            >div{
+              width: 80%;
+              height: 10%;
+              background-color: $color-bk;
+              border-radius: 100px;
+              position: relative;
+              top: 1vh;
+            }
+          }
+        }
+      }
+      // main
+      >main{
+        width: 90%;
+        height: 50vh;
+        order: 2;
+        background-color: $color-c4;
+        @include flex-center-center;
+        >div{
+          width: 80%;
+          height: 60%;
+          @include flex-center-center;
+          column-gap: 5vw;
+          >div{
+            >div{
+              @include flex;
+              justify-content: space-between;
+              >div{
+                  >img{
+                    width: 30px;
+                    height: 30px;
+                  }
+              }
+            }
+            
+          }
+        }
+      }
+    
+  }
+}
+}
